@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://do3jot6ylrgbf"]
+
+[ext_resource type="Script" uid="uid://rm1a86x61x2c" path="res://province_area.gd" id="1_rq56i"]
+
+[node name="Area2D" type="Area2D"]
+script = ExtResource("1_rq56i")
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]

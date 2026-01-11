@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://jeup6wghyx36"]
+
+[ext_resource type="Texture2D" uid="uid://bxvb2pvdaqm3r" path="res://map/map.png" id="1_80nbo"]
+[ext_resource type="Script" uid="uid://bl0hgmo2vo5oc" path="res://map/map_setup.gd" id="1_e2o6t"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_e2o6t")
+
+[node name="map" type="Sprite2D" parent="."]
+position = Vector2(627, 545)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("1_80nbo")
+
+[node name="provinces" type="Node2D" parent="."]
