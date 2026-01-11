@@ -2,6 +2,7 @@ extends Area2D
 
 var province_name = ""
 var province_country = ""
+var province_color = Color()
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -15,19 +16,23 @@ func _process(delta: float) -> void:
 func _on_child_entered_tree(node: Node) -> void:
 	# all those little add_child calls end up calling this
 	if node.is_class("Polygon2D"):
-		node.color = Color(1, 1, 1, 0)
+		if province_country == "Germany":
+			province_color = Color(.71, .24, .23, 1)
+		else:
+			province_color = Color(.21, .25, .67) # hehe 67
+		node.color = province_color
 		
 func _on_mouse_entered():
 	print("yall mighta just hovered ts: ", province_name)
 	for node in get_children():
 		if node.is_class("Polygon2D"):
-			node.color = Color(1, 1, 1, 0.9)
+			node.color = Color(0, 0, 0, .7)
 
 func _on_mouse_exited():
 	# mouse left after entering
 	for node in get_children():
 		if node.is_class("Polygon2D"):
-			node.color = Color(1,1,1,0)
+			node.color = province_color
 
 func _on_input_event(viewport, event, shape_idx):
 	# handle click on the polygon
