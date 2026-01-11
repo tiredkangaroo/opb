@@ -5,14 +5,10 @@
   "#225ea8": "Auvergne-Rhône-Alpes FR",
   "#238b45": "Thüringen DE",
   "#2b8cbe": "Brandenburg DE",
-  "#4eb3d3": "Martinique FR",
-  "#66c2a4": "La Réunion FR",
   "#70a494": "Centre-Val de Loire FR",
   "#7bccc4": "Île-de-France FR",
-  "#80cdc1": "Corsica FR",
   "#8c510a": "Bremen DE",
   "#99d8c9": "Rheinland-Pfalz DE",
-  "#a8ddb5": "Mayotte FR",
   "#b2182b": "Bretagne FR",
   "#bf812d": "Hessen DE",
   "#c7e9b4": "Niedersachsen DE",
@@ -29,7 +25,6 @@
   "#f5f5f5": "Sachsen DE",
   "#f6e8c3": "Occitanie FR",
   "#f7fcf0": "Grand Est FR",
-  "#f7fcfd": "Guadeloupe FR",
   "#fdbf6f": "Hamburg DE",
   "#ffffd9": "Schleswig-Holstein DE"
 }

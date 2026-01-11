@@ -12,9 +12,9 @@ func _process(delta: float) -> void:
 
 func load_provinces():
 	var image = mapImage.get_texture().get_image()
-	#var pixel_color_dict = get_pixel_color_dict(image)
+	var pixel_color_dict = get_pixel_color_dict(image)
 	var provinces_dict = unmarshal_file("res://map/data.json")
-	
+			
 	for province_color in provinces_dict: # key
 		var province = load("res://province_area.tscn").instantiate()
 		
@@ -23,6 +23,7 @@ func load_provinces():
 		var country_code = name_parts[-1]
 		var province_name = " ".join(name_parts.slice(0, name_parts.size() - 1))
 		
+		province.set_name(province_color)
 		province.province_name = province_name
 		if country_code == "DE":
 			province.province_country = "Germany"
@@ -32,7 +33,40 @@ func load_provinces():
 			print("unexpected country code", country_code)
 			return
 		
+		
+		# polygons for the province
+		var polygons = get_polygons(image, pixel_color_dict, province_color)
+		for polygon in polygons:
+			var pv_collision = CollisionPolygon2D.new()
+			var pv_polygon := Polygon2D.new()
+			
+			pv_collision.polygon = polygon
+			pv_polygon.polygon = polygon
+			
+			province.add_child(pv_collision)
+			province.add_child(pv_polygon)
+		
 		get_node("provinces").add_child(province)
+
+# polygon for a province
+func get_polygons(image, pixel_color_dict, province_color):
+	# recreate the img but with all provinces only and with them being white
+	var image_size = image.get_size()
+	var targetImage = Image.create(image_size.x, image_size.y, false, Image.FORMAT_RGBA8)
+	for value in pixel_color_dict[province_color]:
+		targetImage.set_pixel(value.x, value.y, "#ffffff")
+	
+	var bitmap = BitMap.new()
+	bitmap.create_from_image_alpha(targetImage)
+	# make the polygons (an array that contains arrays of vector points)
+	var polygons = bitmap.opaque_to_polygons(
+		Rect2(
+			Vector2(0, 0),
+			bitmap.get_size(),
+		),
+		0.1
+	)
+	return polygons
 
 func unmarshal_file(filepath: String):
 	# open file w read and just parse
