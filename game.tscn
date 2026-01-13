@@ -11,3 +11,11 @@ position = Vector2(679, 557)
 texture = ExtResource("1_80nbo")
 
 [node name="provinces" type="Node2D" parent="."]
+
+[node name="Button" type="Button" parent="."]
+offset_left = 13.0
+offset_top = 31.0
+offset_right = 224.0
+offset_bottom = 97.0
+theme_override_font_sizes/font_size = 28
+text = "deploy a unit"
