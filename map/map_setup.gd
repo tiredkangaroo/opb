@@ -89,3 +89,13 @@ func get_pixel_color_dict(image):
 				d[pixel_color] = []
 			d[pixel_color].append(Vector2(x, y)) # keep a list of every color to the pixels with that color
 	return d
+
+
+func _on_deploy_button_pressed() -> void:
+	# just create a new unit here
+	var unit: Node2D = load("res://Unit.tscn").instantiate()
+	unit.level = 1
+	unit.size = 1000
+	unit.country = "France"
+	unit.set_position(Vector2(500, 500))
+	add_child(unit)
