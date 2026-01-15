@@ -4,3 +4,10 @@
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_c58w5")
+
+[node name="sprite" type="Sprite2D" parent="."]
+
+[node name="LevelLabel" type="Label" parent="."]
+offset_right = 69.0
+offset_bottom = 31.0
+theme_override_font_sizes/font_size = 22

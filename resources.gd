@@ -1,8 +1,8 @@
 extends Node2D
 
-var resource_points = 200
+var resource_points = 800
 var points_per_second = 0.2
-var max_resource_points = 500.0
+var max_resource_points = 4000.0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

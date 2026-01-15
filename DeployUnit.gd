@@ -2,7 +2,7 @@ extends Node2D
 
 var levelPressed = 1
 @onready var resources = get_node("../resources")
-@onready var root = $"."
+@onready var root = get_node("../")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -41,7 +41,6 @@ func _on_level_1_toggled(toggled_on: bool) -> void:
 		levelPressed = 1
 	updateCost()
 
-
 func _on_level_2_toggled(toggled_on: bool) -> void:
 	if toggled_on:
 		levelPressed = 2
@@ -59,7 +58,6 @@ func _on_button_pressed() -> void:
 	var cost = updateCost()
 	if !resources.use(cost):
 		return
-	
 	var unit: Node2D = load("res://Unit.tscn").instantiate()
 	unit.level = levelPressed
 	unit.size = get_node("ColorRect/SizeNode/HSlider").value
